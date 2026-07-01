@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrBox LoyalCore Admin Portal — Site Map</title>
+<style>
+  :root {
+    --bg: #F7F6F3;
+    --surface: #FFFFFF;
+    --border: #E4E2DB;
+    --border-strong: #C8C5BC;
+    --text-primary: #1A1917;
+    --text-secondary: #5C5A55;
+    --text-muted: #9C9A94;
+
+    /* Module màu sắc */
+    --blue-bg: #EAF1FB;
+    --blue-border: #2A6CC4;
+    --blue-text: #0C3D7A;
+    --blue-tag: #C6D9F4;
+
+    --teal-bg: #E0F3EE;
+    --teal-border: #0F7A5A;
+    --teal-text: #085040;
+    --teal-tag: #B2E3D5;
+
+    --coral-bg: #FAF0EB;
+    --coral-border: #C0522A;
+    --coral-text: #7A2E12;
+    --coral-tag: #F5C9B3;
+
+    --amber-bg: #FDF3E0;
+    --amber-border: #B8780F;
+    --amber-text: #6B4208;
+    --amber-tag: #FAD98A;
+
+    --green-bg: #EBF4DF;
+    --green-border: #3D7A12;
+    --green-text: #1E4A08;
+    --green-tag: #C5E19C;
+
+    --pink-bg: #F9EBF2;
+    --pink-border: #A82E62;
+    --pink-text: #6B1240;
+    --pink-tag: #F0BDD6;
+
+    --gray-sub: #F2F1EE;
+    --gray-sub-border: #D4D2CC;
+    --gray-sub-text: #3A3835;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    padding: 40px 32px 80px;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .page-header {
+    max-width: 1200px;
+    margin: 0 auto 36px;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Grid 6 cột */
+  .modules-grid {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .modules-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Module card */
+  .module-card {
+    background: var(--surface);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .module-header {
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .module-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .module-meta { flex: 1; min-width: 0; }
+
+  .module-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .module-goal {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .module-user {
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 4px;
+    display: inline-block;
+  }
+
+  /* Pages list */
+  .pages-list {
+    padding: 8px 0;
+  }
+
+  .page-item {
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .page-item:last-child { border-bottom: none; }
+
+  .page-name {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .page-desc {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* Sub-pages (wizard steps) */
+  .sub-pages {
+    margin-top: 4px;
+    margin-left: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .sub-tag {
+    font-size: 10.5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--gray-sub);
+    color: var(--gray-sub-text);
+    border: 1px solid var(--gray-sub-border);
+    font-weight: 500;
+  }
+
+  /* Bảng mục tiêu */
+  .table-section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .goal-table {
+    width: 100%;
+    background: var(--surface);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    border-collapse: collapse;
+  }
+
+  .goal-table thead tr {
+    background: var(--gray-sub);
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .goal-table th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .goal-table td {
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text-primary);
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .goal-table tr:last-child td { border-bottom: none; }
+
+  .goal-table tr:hover td { background: #FBFAF8; }
+
+  .module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .user-chip {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+  }
+
+  .page-name-cell {
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  .goal-cell {
+    color: var(--text-secondary);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>UrBox LoyalCore Admin Portal — Site Map</h1>
+  <p>Cấu trúc trang, mục tiêu và người dùng chính theo từng module</p>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#2A6CC4"></div>Dashboard</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#0F7A5A"></div>Campaigns</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C0522A"></div>Benefit Catalog</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#B8780F"></div>Fulfillment</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3D7A12"></div>Audience</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#A82E62"></div>Finance & Settings</div>
+  </div>
+</div>
+
+<!-- Module Cards -->
+<div class="modules-grid">
+
+  <!-- Dashboard -->
+  <div class="module-card">
+    <div class="module-header" style="border-left: 3px solid var(--blue-border);">
+      <div class="module-icon" style="background:var(--blue-bg);">📊</div>
+      <div class="module-meta">
+        <div class="module-name">Dashboard</div>
+        <div class="module-goal">Tổng quan sức khoẻ platform, xử lý pending</div>
+        <div class="module-user" style="background:var(--blue-tag);color:var(--blue-text);">Campaign Mgr · Admin</div>
+      </div>
+    </div>
+    <div class="pages-list">
+      <div class="page-item">
+        <div class="page-name">KPI Scorecard</div>
+        <div class="page-desc">Điểm số hiệu quả platform theo thời gian thực</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Approval Queue</div>
+        <div class="page-desc">Duyệt các item đang chờ phê duyệt</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Task List</div>
+        <div class="page-desc">Việc cần làm phân theo vai trò</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaigns -->
+  <div class="module-card">
+    <div class="module-header" style="border-left: 3px solid var(--teal-border);">
+      <div class="module-icon" style="background:var(--teal-bg);">🎯</div>
+      <div class="module-meta">
+        <div class="module-name">Campaigns</div>
+        <div class="module-goal">Tạo và quản lý chiến dịch loyalty</div>
+        <div class="module-user" style="background:var(--teal-tag);color:var(--teal-text);">Campaign Manager</div>
+      </div>
+    </div>
+    <div class="pages-list">
+      <div class="page-item">
+        <div class="page-name">Campaign List</div>
+        <div class="page-desc">Danh sách, filter và theo dõi trạng thái</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Create Wizard (6 bước)</div>
+        <div class="page-desc">Tạo campaign từ template hoặc from scratch</div>
+        <div class="sub-pages">
+          <span class="sub-tag">Goal / Template</span>
+          <span class="sub-tag">Basic Info</span>
+          <span class="sub-tag">Audience</span>
+          <span class="sub-tag">Benefits</span>
+          <span class="sub-tag">Rules</span>
+          <span class="sub-tag">Budget</span>
+          <span class="sub-tag">Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefit Catalog -->
+  <div class="module-card">
+    <div class="module-header" style="border-left: 3px solid var(--coral-border);">
+      <div class="module-icon" style="background:var(--coral-bg);">🎁</div>
+      <div class="module-meta">
+        <div class="module-name">Benefit Catalog</div>
+        <div class="module-goal">Quản lý kho benefit và recipe template</div>
+        <div class="module-user" style="background:var(--coral-tag);color:var(--coral-text);">Product Ops · Campaign Mgr</div>
+      </div>
+    </div>
+    <div class="pages-list">
+      <div class="page-item">
+        <div class="page-name">Gift Library</div>
+        <div class="page-desc">Danh sách benefit theo scheme, source, status</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Benefit Detail</div>
+        <div class="page-desc">Xem và chỉnh sửa thông tin benefit</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Recipe Library</div>
+        <div class="page-desc">Template campaign đóng gói sẵn</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Recipe Detail</div>
+        <div class="page-desc">Preview và quick-use template</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fulfillment -->
+  <div class="module-card">
+    <div class="module-header" style="border-left: 3px solid var(--amber-border);">
+      <div class="module-icon" style="background:var(--amber-bg);">⚙️</div>
+      <div class="module-meta">
+        <div class="module-name">Fulfillment</div>
+        <div class="module-goal">Monitor và debug phát thưởng</div>
+        <div class="module-user" style="background:var(--amber-tag);color:var(--amber-text);">Ops Team</div>
+      </div>
+    </div>
+    <div class="pages-list">
+      <div class="page-item">
+        <div class="page-name">Job Overview</div>
+        <div class="page-desc">Danh sách job + KPI pending / processing / failed</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Job Detail</div>
+        <div class="page-desc">Timeline chi tiết, debug lỗi, retry / revoke</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audience -->
+  <div class="module-card">
+    <div class="module-header" style="border-left: 3px solid var(--green-border);">
+      <div class="module-icon" style="background:var(--green-bg);">👥</div>
+      <div class="module-meta">
+        <div class="module-name">Audience</div>
+        <div class="module-goal">Quản lý hội viên, segmentation và tier</div>
+        <div class="module-user" style="background:var(--green-tag);color:var(--green-text);">CS · Campaign Mgr · Product Ops</div>
+      </div>
+    </div>
+    <div class="pages-list">
+      <div class="page-item">
+        <div class="page-name">Customer Profile</div>
+        <div class="page-desc">Hồ sơ hội viên: benefit, tier, giao dịch</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Segmentation</div>
+        <div class="page-desc">Tạo và quản lý nhóm đối tượng campaign</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Tier Management</div>
+        <div class="page-desc">Cấu hình quy tắc nâng / hạ hạng hội viên</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Finance & Settings -->
+  <div class="module-card">
+    <div class="module-header" style="border-left: 3px solid var(--pink-border);">
+      <div class="module-icon" style="background:var(--pink-bg);">💰</div>
+      <div class="module-meta">
+        <div class="module-name">Finance & Settings</div>
+        <div class="module-goal">Ngân sách, tồn kho, báo cáo và cấu hình</div>
+        <div class="module-user" style="background:var(--pink-tag);color:var(--pink-text);">Finance · Admin</div>
+      </div>
+    </div>
+    <div class="pages-list">
+      <div class="page-item">
+        <div class="page-name">Budget</div>
+        <div class="page-desc">Phân bổ và theo dõi ngân sách theo nguồn</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Inventory & Stock</div>
+        <div class="page-desc">Tồn kho voucher, cảnh báo hết hàng</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Reports</div>
+        <div class="page-desc">Báo cáo hiệu quả campaign, redemption, cost</div>
+      </div>
+      <div class="page-item">
+        <div class="page-name">Settings</div>
+        <div class="page-desc">Cấu hình platform, phân quyền user, integrations</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bảng mục tiêu đầy đủ -->
+<div class="table-section">
+  <div class="section-title">Mục tiêu & người dùng theo từng trang</div>
+  <table class="goal-table">
+    <thead>
+      <tr>
+        <th style="width:16%">Module</th>
+        <th style="width:18%">Trang</th>
+        <th style="width:40%">Mục tiêu chính</th>
+        <th style="width:26%">Người dùng chính</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="module-badge" style="background:var(--blue-bg);color:var(--blue-text);"><span class="badge-dot" style="background:var(--blue-border)"></span>Dashboard</span></td>
+        <td class="page-name-cell">KPI Scorecard</td>
+        <td class="goal-cell">Nhìn nhanh sức khoẻ platform theo thời gian thực</td>
+        <td class="user-chip">Campaign Manager, Admin</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--blue-bg);color:var(--blue-text);"><span class="badge-dot" style="background:var(--blue-border)"></span>Dashboard</span></td>
+        <td class="page-name-cell">Approval Queue</td>
+        <td class="goal-cell">Duyệt các item pending — campaign, benefit, tier rule</td>
+        <td class="user-chip">Campaign Manager, Admin</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--blue-bg);color:var(--blue-text);"><span class="badge-dot" style="background:var(--blue-border)"></span>Dashboard</span></td>
+        <td class="page-name-cell">Task List</td>
+        <td class="goal-cell">Công việc cần xử lý phân theo vai trò đăng nhập</td>
+        <td class="user-chip">Campaign Manager, Admin</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--teal-bg);color:var(--teal-text);"><span class="badge-dot" style="background:var(--teal-border)"></span>Campaigns</span></td>
+        <td class="page-name-cell">Campaign List</td>
+        <td class="goal-cell">Tìm, lọc và theo dõi trạng thái toàn bộ chiến dịch</td>
+        <td class="user-chip">Campaign Manager</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--teal-bg);color:var(--teal-text);"><span class="badge-dot" style="background:var(--teal-border)"></span>Campaigns</span></td>
+        <td class="page-name-cell">Create Wizard</td>
+        <td class="goal-cell">Tạo campaign 6 bước — từ template hoặc cấu hình từ đầu</td>
+        <td class="user-chip">Campaign Manager</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--coral-bg);color:var(--coral-text);"><span class="badge-dot" style="background:var(--coral-border)"></span>Benefit Catalog</span></td>
+        <td class="page-name-cell">Gift Library</td>
+        <td class="goal-cell">Quản lý kho benefit theo scheme, source và status</td>
+        <td class="user-chip">Product Ops, Campaign Mgr</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--coral-bg);color:var(--coral-text);"><span class="badge-dot" style="background:var(--coral-border)"></span>Benefit Catalog</span></td>
+        <td class="page-name-cell">Benefit Detail</td>
+        <td class="goal-cell">Xem, chỉnh sửa metadata và cấu hình benefit</td>
+        <td class="user-chip">Product Ops</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--coral-bg);color:var(--coral-text);"><span class="badge-dot" style="background:var(--coral-border)"></span>Benefit Catalog</span></td>
+        <td class="page-name-cell">Recipe Library</td>
+        <td class="goal-cell">Thư viện template campaign đóng gói sẵn để dùng lại</td>
+        <td class="user-chip">Campaign Manager</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--coral-bg);color:var(--coral-text);"><span class="badge-dot" style="background:var(--coral-border)"></span>Benefit Catalog</span></td>
+        <td class="page-name-cell">Recipe Detail</td>
+        <td class="goal-cell">Preview chi tiết và quick-use recipe vào wizard</td>
+        <td class="user-chip">Campaign Manager</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--amber-bg);color:var(--amber-text);"><span class="badge-dot" style="background:var(--amber-border)"></span>Fulfillment</span></td>
+        <td class="page-name-cell">Job Overview</td>
+        <td class="goal-cell">Monitor toàn bộ job phát thưởng — pending, processing, failed</td>
+        <td class="user-chip">Ops Team</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--amber-bg);color:var(--amber-text);"><span class="badge-dot" style="background:var(--amber-border)"></span>Fulfillment</span></td>
+        <td class="page-name-cell">Job Detail</td>
+        <td class="goal-cell">Debug lỗi, xem timeline từng bước, retry / revoke job</td>
+        <td class="user-chip">Ops Team</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--green-bg);color:var(--green-text);"><span class="badge-dot" style="background:var(--green-border)"></span>Audience</span></td>
+        <td class="page-name-cell">Customer Profile</td>
+        <td class="goal-cell">Xem lịch sử benefit, tier, điểm và giao dịch từng hội viên</td>
+        <td class="user-chip">CS, Campaign Manager</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--green-bg);color:var(--green-text);"><span class="badge-dot" style="background:var(--green-border)"></span>Audience</span></td>
+        <td class="page-name-cell">Segmentation</td>
+        <td class="goal-cell">Tạo và quản lý segment hội viên cho targeting campaign</td>
+        <td class="user-chip">Campaign Manager</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--green-bg);color:var(--green-text);"><span class="badge-dot" style="background:var(--green-border)"></span>Audience</span></td>
+        <td class="page-name-cell">Tier Management</td>
+        <td class="goal-cell">Cấu hình quy tắc earn/burn và điều kiện nâng / hạ hạng</td>
+        <td class="user-chip">Product Ops, Admin</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--pink-bg);color:var(--pink-text);"><span class="badge-dot" style="background:var(--pink-border)"></span>Finance</span></td>
+        <td class="page-name-cell">Budget</td>
+        <td class="goal-cell">Phân bổ và theo dõi ngân sách campaign theo nguồn</td>
+        <td class="user-chip">Finance, Admin</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--pink-bg);color:var(--pink-text);"><span class="badge-dot" style="background:var(--pink-border)"></span>Finance</span></td>
+        <td class="page-name-cell">Inventory & Stock</td>
+        <td class="goal-cell">Quản lý tồn kho voucher, cảnh báo khi sắp hết</td>
+        <td class="user-chip">Ops Team</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--pink-bg);color:var(--pink-text);"><span class="badge-dot" style="background:var(--pink-border)"></span>Finance</span></td>
+        <td class="page-name-cell">Reports</td>
+        <td class="goal-cell">Báo cáo hiệu quả campaign, redemption rate, cost per benefit</td>
+        <td class="user-chip">Finance, Admin, Campaign Mgr</td>
+      </tr>
+      <tr>
+        <td><span class="module-badge" style="background:var(--pink-bg);color:var(--pink-text);"><span class="badge-dot" style="background:var(--pink-border)"></span>Settings</span></td>
+        <td class="page-name-cell">Settings</td>
+        <td class="goal-cell">Cấu hình platform, quản lý phân quyền user và integrations</td>
+        <td class="user-chip">Admin</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
